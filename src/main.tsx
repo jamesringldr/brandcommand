@@ -8,3 +8,12 @@ createRoot(document.getElementById('root')!).render(
     <App />
   </StrictMode>,
 )
+
+// Dev-only hook for the M1 RLS leak test (docs/leak-test.md)
+if (import.meta.env.DEV) {
+  void import('./lib/supabase').then(({ supabase }) => {
+    ;(window as unknown as { __bc: { supabase: typeof supabase } }).__bc = {
+      supabase,
+    }
+  })
+}

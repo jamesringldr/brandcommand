@@ -1,32 +1,35 @@
-# React + TypeScript + Vite
+# BrandCommand
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Internal multi-brand marketing console — Planner (Buffer-style queue) + centralized analytics rollups.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React + Vite (TS) + Tailwind v4
+- Supabase Auth (Google) + Postgres RLS on `brand_id`
+- Cloudflare Pages (`public/_redirects`)
 
-## React Compiler
+## Local run
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+cd /Users/jameso/DevWork/BrandCommand
+cp .env.example .env.local
+# Fill VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Then apply SQL under `supabase/migrations/` in the Supabase SQL editor (in order), enable Google OAuth, and seed `brands` + `user_brands` (see `0008_seed.sql`).
+
+## Scripts
+
+| Command | Purpose |
+|---|---|
+| `npm run dev` | Vite dev server |
+| `npm run build` | Typecheck + production build |
+| `npm run preview` | Preview `dist/` |
+
+## Docs
+
+- [docs/rls-policy.md](docs/rls-policy.md)
+- [docs/connectors.md](docs/connectors.md)
+- [docs/scheduling.md](docs/scheduling.md)
