@@ -12,6 +12,9 @@ import Campaigns from './routes/Campaigns'
 import Suggestions from './routes/Suggestions'
 import CreatePost from './routes/CreatePost'
 import Settings from './routes/Settings'
+import Inbox from './routes/Inbox'
+import { ChannelsSocials, ChannelsReviews } from './routes/Channels'
+import Connections from './routes/Connections'
 import { RedirectToSettingsTab } from './routes/RedirectToSettingsTab'
 
 const queryClient = new QueryClient()
@@ -32,6 +35,7 @@ function App() {
           >
             <Route index element={<></>} />
             <Route path=":brandSlug/dashboard" element={<BrandDashboard />} />
+            <Route path=":brandSlug/inbox" element={<Inbox />} />
             <Route path=":brandSlug/planner" element={<PlannerBoard />} />
             <Route
               path=":brandSlug/planner/:itemId"
@@ -41,13 +45,17 @@ function App() {
             <Route path=":brandSlug/campaigns" element={<Campaigns />} />
             <Route path=":brandSlug/create" element={<CreatePost />} />
             <Route path=":brandSlug/suggestions" element={<Suggestions />} />
+            <Route
+              path=":brandSlug/channels/socials/:channelId"
+              element={<ChannelsSocials />}
+            />
+            <Route
+              path=":brandSlug/channels/reviews/:channelId"
+              element={<ChannelsReviews />}
+            />
+            <Route path=":brandSlug/connections" element={<Connections />} />
             <Route path=":brandSlug/settings" element={<Settings />} />
             <Route path=":brandSlug/settings/:tab" element={<Settings />} />
-            {/* Old paths → Settings tabs */}
-            <Route
-              path=":brandSlug/channels"
-              element={<RedirectToSettingsTab tab="socials" />}
-            />
             <Route
               path=":brandSlug/voice"
               element={<RedirectToSettingsTab tab="vibe" />}

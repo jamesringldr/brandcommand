@@ -1,29 +1,25 @@
 import type { ReactNode } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useBrandContext } from '../BrandProvider'
+import { cn } from '../../lib/cn'
 import { TreeItem } from './SidebarTree'
+import { SidebarNav } from './SidebarNav'
 
 type AppShellProps = {
   children: ReactNode
   title?: string
   subtitle?: string
   headerAction?: ReactNode
+  /** Lock shell to viewport height and let children fill (e.g. scrollable planner columns). */
+  fillHeight?: boolean
 }
-
-const MAIN_LINKS = [
-  { id: 'dashboard', label: 'Home', path: 'dashboard' },
-  { id: 'create', label: 'Generate', path: 'create' },
-  { id: 'planner', label: 'Planner', path: 'planner' },
-  { id: 'schedule', label: 'Schedule', path: 'schedule' },
-  { id: 'campaigns', label: 'Goals', path: 'campaigns' },
-  { id: 'suggestions', label: 'Insights', path: 'suggestions' },
-] as const
 
 export function AppShell({
   children,
   title,
   subtitle,
   headerAction,
+  fillHeight = false,
 }: AppShellProps) {
   const location = useLocation()
   const { brands, logout, loading, activeBrand } = useBrandContext()
@@ -35,7 +31,12 @@ export function AppShell({
       location.pathname.startsWith(`${base}/create/`))
 
   return (
-    <div className="flex min-h-screen bg-neutral-950 text-neutral-100">
+    <div
+      className={cn(
+        'flex bg-neutral-950 text-neutral-100',
+        fillHeight ? 'h-dvh overflow-hidden' : 'min-h-screen',
+      )}
+    >
       <aside className="flex w-56 shrink-0 flex-col border-r border-neutral-800 bg-neutral-900">
         <div className="border-b border-neutral-800 px-4 py-5">
           <Link
@@ -63,23 +64,7 @@ export function AppShell({
               >
                 + New
               </Link>
-              <ul className="space-y-0.5">
-                {MAIN_LINKS.map((link) => {
-                  const href = `${base}/${link.path}`
-                  const isActive =
-                    location.pathname === href ||
-                    location.pathname.startsWith(`${href}/`)
-                  return (
-                    <TreeItem
-                      key={link.id}
-                      label={link.label}
-                      href={href}
-                      isActive={isActive}
-                      depth={0}
-                    />
-                  )
-                })}
-              </ul>
+              <SidebarNav base={base} />
             </div>
           )}
         </nav>
@@ -104,8 +89,13 @@ export function AppShell({
         </div>
       </aside>
 
-      <div className="flex min-w-0 flex-1 flex-col">
-        <header className="border-b border-neutral-800 bg-neutral-900/80 px-6 py-4">
+      <div
+        className={cn(
+          'flex min-w-0 flex-1 flex-col',
+          fillHeight && 'min-h-0',
+        )}
+      >
+        <header className="shrink-0 border-b border-neutral-800 bg-neutral-900/80 px-6 py-4">
           <div className="flex items-start justify-between gap-4">
             <div className="min-w-0 flex-1">
               {(title || subtitle) && (
@@ -142,7 +132,16 @@ export function AppShell({
             </div>
           </div>
         </header>
-        <main className="flex-1 overflow-y-auto px-6 py-6">{children}</main>
+        <main
+          className={cn(
+            'min-h-0 flex-1 px-6',
+            fillHeight
+              ? 'flex flex-col overflow-hidden pt-6 pb-0'
+              : 'overflow-y-auto py-6',
+          )}
+        >
+          {children}
+        </main>
       </div>
     </div>
   )

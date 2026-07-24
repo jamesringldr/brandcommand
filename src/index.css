@@ -31,3 +31,13 @@ body {
   font-family: ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
+
+/* Planner board — drag overlay grab feedback */
+.planner-card-dragging {
+  transform: rotate(2deg) scale(1.02);
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(50, 215, 53, 0.25);
+  border-color: rgb(31 140 34 / 0.5);
+  cursor: grabbing;
+}
