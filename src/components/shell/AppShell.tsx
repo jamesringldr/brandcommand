@@ -60,13 +60,15 @@ export function AppShell({
           )}
           {!loading && brand && (
             <div className="space-y-2">
-              <button
-                type="button"
-                onClick={openCreatePost}
-                className="flex items-center justify-center rounded-md bg-accent-600 px-2 py-2 text-sm font-medium text-neutral-950 transition hover:bg-accent-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500"
-              >
-                + New
-              </button>
+              <div className="flex justify-center">
+                <button
+                  type="button"
+                  onClick={openCreatePost}
+                  className="flex w-[80%] items-center justify-center rounded-md bg-accent-600 px-2 py-2 text-sm font-bold text-white transition hover:bg-accent-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500"
+                >
+                  + New
+                </button>
+              </div>
               <SidebarNav base={base} />
             </div>
           )}
@@ -120,14 +122,14 @@ export function AppShell({
                 (isGenerateView ? (
                   <Link
                     to={`${base}/planner`}
-                    className="rounded-md bg-accent-600 px-3 py-1.5 text-sm font-medium text-neutral-950 transition hover:bg-accent-400"
+                    className="rounded-md bg-accent-600 px-3 py-1.5 text-sm font-bold text-white transition hover:bg-accent-400"
                   >
                     Planner
                   </Link>
                 ) : (
                   <Link
                     to={`${base}/create`}
-                    className="rounded-md bg-accent-600 px-3 py-1.5 text-sm font-medium text-neutral-950 transition hover:bg-accent-400"
+                    className="rounded-md bg-accent-600 px-3 py-1.5 text-sm font-bold text-white transition hover:bg-accent-400"
                   >
                     Generate
                   </Link>

@@ -6,17 +6,17 @@
 }
 
 @theme {
-  --color-accent-50: #eaffea;
-  --color-accent-100: #c8fbc9;
-  --color-accent-200: #95f597;
-  --color-accent-300: #62ee66;
-  --color-accent-400: #45e349;
-  --color-accent-500: #32d735;
-  --color-accent-600: #32d735;
-  --color-accent-700: #28b52b;
-  --color-accent-800: #1f8c22;
-  --color-accent-900: #166619;
-  --color-accent-950: #0a3a0c;
+  --color-accent-50: #e8f3fa;
+  --color-accent-100: #c8e3f5;
+  --color-accent-200: #a0d0ed;
+  --color-accent-300: #78bde5;
+  --color-accent-400: #4fa8dd;
+  --color-accent-500: #2a95d5;
+  --color-accent-600: #0072b1;
+  --color-accent-700: #005a8f;
+  --color-accent-800: #00446d;
+  --color-accent-900: #002f4b;
+  --color-accent-950: #001a2a;
 }
 
 html {
@@ -37,7 +37,7 @@ body {
   transform: rotate(2deg) scale(1.02);
   box-shadow:
     0 12px 28px rgba(0, 0, 0, 0.45),
-    0 0 0 1px rgba(50, 215, 53, 0.25);
-  border-color: rgb(31 140 34 / 0.5);
+    0 0 0 1px rgba(0, 114, 177, 0.25);
+  border-color: rgb(0 84 143 / 0.5);
   cursor: grabbing;
 }
