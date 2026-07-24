@@ -57,7 +57,13 @@ export default function Login() {
         await signInWithEmail(email, password)
       }
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Sign-in failed')
+      let message = 'Sign-in failed'
+      if (err instanceof Error) {
+        message = err.message
+      } else if (typeof err === 'object' && err !== null && 'message' in err) {
+        message = (err as { message: string }).message
+      }
+      setError(message)
       setLoading(false)
     }
   }
