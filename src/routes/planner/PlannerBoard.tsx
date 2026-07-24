@@ -11,6 +11,7 @@ import {
 } from '@dnd-kit/core'
 import { AppShell } from '../../components/shell/AppShell'
 import { useBrandContext } from '../../components/BrandProvider'
+import { useCreatePostModal } from '../../components/composer/CreatePostModalContext'
 import { BoardColumn } from '../../components/planner/BoardColumn'
 import {
   ContentItemCard,
@@ -39,6 +40,7 @@ import type {
 
 export default function PlannerBoard() {
   const { activeBrand } = useBrandContext()
+  const { openCreatePost } = useCreatePostModal()
   const [items, setItems] = useState<ContentItem[]>([])
   const [connectors, setConnectors] = useState<BrandConnector[]>([])
   const [goals, setGoals] = useState<Campaign[]>([])
@@ -50,8 +52,6 @@ export default function PlannerBoard() {
     () => connectedSocialChannels(connectors),
     [connectors],
   )
-
-  const newIdeaHref = activeBrand ? `/${activeBrand.slug}/create` : '/create'
 
   const load = useCallback(async () => {
     if (!activeBrand) return
@@ -212,7 +212,7 @@ export default function PlannerBoard() {
                   key={col}
                   status={col}
                   count={byStatus.get(col)?.length ?? 0}
-                  newIdeaHref={newIdeaHref}
+                  onNewIdea={openCreatePost}
                   acceptDrops={col !== 'Posted'}
                 >
                   {(byStatus.get(col) ?? []).map((item) => (

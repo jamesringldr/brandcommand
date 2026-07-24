@@ -4,7 +4,8 @@ import { AppShell } from '../components/shell/AppShell'
 import { useBrandContext } from '../components/BrandProvider'
 import { cn } from '../lib/cn'
 import { requestSuggestions, acceptSuggestion } from '../lib/ai/api'
-import { createItem } from '../lib/planner/api'
+import { SUGGESTIONS } from '../lib/planner/suggestions'
+import { useCreatePostModal } from '../components/composer/CreatePostModalContext'
 import type { AiSuggestion } from '../lib/database.types'
 
 type ChatMessage = {
@@ -16,42 +17,10 @@ type ChatMessage = {
 const OPENING_LINE_1 = 'Greetings Ash!'
 const OPENING_LINE_2 = 'What shall we cook up, today?'
 
-const SUGGESTIONS = [
-  {
-    id: 'launch',
-    label: 'Product launch',
-    prompt: 'Tease an upcoming product or feature launch',
-  },
-  {
-    id: 'win',
-    label: 'Customer win',
-    prompt: 'Share a concrete customer success story',
-  },
-  {
-    id: 'bts',
-    label: 'Behind the scenes',
-    prompt: 'Show behind-the-scenes of how we work',
-  },
-  {
-    id: 'tip',
-    label: 'Quick tip',
-    prompt: 'Teach one useful tip our audience can use today',
-  },
-  {
-    id: 'promo',
-    label: 'Promo / offer',
-    prompt: 'Promote an offer without sounding spammy',
-  },
-  {
-    id: 'engage',
-    label: 'Engagement ask',
-    prompt: 'Ask a question that sparks comments and replies',
-  },
-] as const
-
 export default function CreatePost() {
   const { activeBrand } = useBrandContext()
   const navigate = useNavigate()
+  const { openCreatePost } = useCreatePostModal()
   const inputRef = useRef<HTMLTextAreaElement>(null)
   const [prompt, setPrompt] = useState('')
   const [selectedSuggestion, setSelectedSuggestion] = useState<string | null>(
@@ -124,17 +93,8 @@ export default function CreatePost() {
     }
   }
 
-  async function handleStartNewPost() {
-    setError(null)
-    try {
-      const item = await createItem({
-        brand_id: brand.id,
-        title: 'Untitled post',
-      })
-      void navigate(`/${brand.slug}/planner/${item.id}`)
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Could not start post')
-    }
+  function handleStartNewPost() {
+    openCreatePost()
   }
 
   return (
@@ -271,7 +231,7 @@ export default function CreatePost() {
               </p>
               <button
                 type="button"
-                onClick={() => void handleStartNewPost()}
+                onClick={handleStartNewPost}
                 className="rounded-md border border-neutral-700 bg-neutral-900 px-4 py-2 text-sm font-medium text-neutral-100 hover:border-neutral-600 hover:bg-neutral-800"
               >
                 Start New Post

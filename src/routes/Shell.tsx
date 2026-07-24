@@ -1,5 +1,6 @@
 import { Navigate, Outlet, useParams } from 'react-router-dom'
 import { BrandProvider, useBrandContext } from '../components/BrandProvider'
+import { CreatePostModalProvider } from '../components/composer/CreatePostModalContext'
 
 function ShellInner() {
   const { brandSlug } = useParams<{ brandSlug?: string }>()
@@ -39,7 +40,11 @@ function ShellInner() {
     return <Navigate to={`/${brand.slug}/dashboard`} replace />
   }
 
-  return <Outlet />
+  return (
+    <CreatePostModalProvider>
+      <Outlet />
+    </CreatePostModalProvider>
+  )
 }
 
 export default function Shell() {

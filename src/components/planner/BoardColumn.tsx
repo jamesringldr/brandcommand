@@ -1,6 +1,5 @@
 import { useDroppable } from '@dnd-kit/core'
 import type { ReactNode } from 'react'
-import { Link } from 'react-router-dom'
 import type { ContentStatus } from '../../lib/database.types'
 import { cn } from '../../lib/cn'
 
@@ -8,8 +7,8 @@ type BoardColumnProps = {
   status: ContentStatus
   count: number
   children: ReactNode
-  /** Same destination as sidebar "+ New" (`/:brandSlug/create`). */
-  newIdeaHref: string
+  /** Opens the Create Post modal (same target as sidebar "+ New"). */
+  onNewIdea: () => void
   /** Posted is service-only — still shown but not a valid drop target. */
   acceptDrops?: boolean
 }
@@ -18,7 +17,7 @@ export function BoardColumn({
   status,
   count,
   children,
-  newIdeaHref,
+  onNewIdea,
   acceptDrops = true,
 }: BoardColumnProps) {
   const { setNodeRef, isOver } = useDroppable({
@@ -48,23 +47,25 @@ export function BoardColumn({
             {count}
           </span>
         </div>
-        <Link
-          to={newIdeaHref}
+        <button
+          type="button"
+          onClick={onNewIdea}
           className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md text-lg leading-none text-neutral-400 transition hover:bg-neutral-800 hover:text-neutral-100"
           aria-label={`New idea in ${status}`}
           title="New idea"
         >
           +
-        </Link>
+        </button>
       </header>
 
       <div className="flex min-h-0 flex-1 flex-col gap-2 px-3 pb-3">
-        <Link
-          to={newIdeaHref}
+        <button
+          type="button"
+          onClick={onNewIdea}
           className="shrink-0 rounded-md px-1 py-1.5 text-left text-sm text-neutral-300 transition hover:bg-neutral-800/70 hover:text-neutral-100"
         >
           + New Idea
-        </Link>
+        </button>
 
         <ul className="min-h-0 flex-1 space-y-2 overflow-y-auto overscroll-contain pt-0.5 pr-0.5">
           {children}
