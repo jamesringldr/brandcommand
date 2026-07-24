@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useBrandContext } from '../BrandProvider'
 import { cn } from '../../lib/cn'
@@ -60,6 +60,8 @@ export function CreatePostModal({ onClose }: { onClose: () => void }) {
   const [scheduleAt, setScheduleAt] = useState('')
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [addMediaOpen, setAddMediaOpen] = useState(false)
+  const fileInputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     if (!activeBrand) return
@@ -269,11 +271,44 @@ export function CreatePostModal({ onClose }: { onClose: () => void }) {
             />
 
             <div className="flex items-center justify-between">
-              <div className="flex h-24 w-24 flex-col items-center justify-center gap-1 rounded-xl border border-dashed border-neutral-600 text-center text-neutral-500">
-                <span className="text-lg leading-none">+</span>
-                <span className="px-1 text-[10px] leading-tight">
-                  Drag &amp; drop or use the Designs tab
-                </span>
+              <div className="relative">
+                <button
+                  type="button"
+                  onClick={() => setAddMediaOpen((o) => !o)}
+                  className="flex h-24 w-24 flex-col items-center justify-center gap-1 rounded-xl border border-dashed border-neutral-600 bg-transparent text-center text-white transition hover:border-neutral-400"
+                >
+                  <span className="text-2xl leading-none text-white">+</span>
+                  <span className="px-1 text-xs font-medium leading-tight text-white">
+                    Add Media
+                  </span>
+                </button>
+
+                {addMediaOpen && (
+                  <div className="absolute left-0 top-full z-10 mt-2 w-48 rounded-xl border border-neutral-700 bg-neutral-700 p-1.5 shadow-xl">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setAddMediaOpen(false)
+                        fileInputRef.current?.click()
+                      }}
+                      className="block w-full rounded-lg px-3 py-2 text-left text-sm text-neutral-100 hover:bg-neutral-600/70"
+                    >
+                      From This Device
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setAddMediaOpen(false)
+                        setActiveTab('designs')
+                      }}
+                      className="block w-full rounded-lg px-3 py-2 text-left text-sm text-neutral-100 hover:bg-neutral-600/70"
+                    >
+                      Designs Folder
+                    </button>
+                  </div>
+                )}
+
+                <input ref={fileInputRef} type="file" className="hidden" />
               </div>
               <span className="text-xs tabular-nums text-neutral-500">
                 {remaining}
