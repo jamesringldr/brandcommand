@@ -157,7 +157,7 @@ export function CreatePostModal({ onClose }: { onClose: () => void }) {
     >
       <div
         className={cn(
-          'flex max-h-[95vh] w-full flex-col overflow-hidden rounded-2xl bg-neutral-800 ring-1 ring-neutral-700 transition-[max-width]',
+          'flex h-[90vh] w-full flex-col overflow-hidden rounded-2xl bg-neutral-800 ring-1 ring-neutral-700 transition-[max-width]',
           expanded ? 'max-w-[95vw]' : 'max-w-[90vw]',
         )}
       >
