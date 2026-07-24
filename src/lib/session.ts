@@ -57,6 +57,28 @@ export async function resolveSessionContext(): Promise<SessionContext | null> {
   return { user, role, brands: brands ?? [], isOwner }
 }
 
+export async function signInWithEmail(
+  email: string,
+  password: string,
+): Promise<void> {
+  const { error } = await supabase.auth.signInWithPassword({
+    email,
+    password,
+  })
+  if (error) throw error
+}
+
+export async function signUpWithEmail(
+  email: string,
+  password: string,
+): Promise<void> {
+  const { error } = await supabase.auth.signUp({
+    email,
+    password,
+  })
+  if (error) throw error
+}
+
 export async function signInWithGoogle(): Promise<void> {
   const redirectTo = `${window.location.origin}/auth/callback`
   const { error } = await supabase.auth.signInWithOAuth({
