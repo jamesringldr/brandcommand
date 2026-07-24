@@ -89,7 +89,7 @@ export function ComposerAiAssistPanel({
   }
 
   return (
-    <div className="flex h-full flex-col gap-4 p-5">
+    <div className="flex h-full flex-col gap-3 px-4 py-5">
       <h3 className="text-sm font-semibold text-neutral-100">AI Assist</h3>
 
       {phase === 'loading' && (

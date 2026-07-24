@@ -226,8 +226,8 @@ export function CreatePostModal({ onClose }: { onClose: () => void }) {
           </div>
         </header>
 
-        <div className="grid min-h-0 flex-1 grid-cols-1 divide-neutral-800 overflow-hidden lg:grid-cols-2 lg:divide-x">
-          <div className="flex min-h-0 flex-col gap-3 overflow-y-auto p-5">
+        <div className="grid min-h-0 flex-1 grid-cols-1 divide-neutral-800 overflow-hidden lg:grid-cols-[4fr_1fr] lg:divide-x">
+          <div className="flex min-h-0 flex-col gap-4 overflow-y-auto px-6 py-5">
             <div className="flex items-center gap-2">
               {channels.map((ch) => {
                 const active = selectedPlatforms.includes(ch.value)
@@ -291,7 +291,7 @@ export function CreatePostModal({ onClose }: { onClose: () => void }) {
             </label>
           </div>
 
-          <div className="min-h-0 overflow-y-auto">
+          <div className="min-h-0 overflow-y-auto border-l border-neutral-800">
             {activeTab === 'ai' && (
               <ComposerAiAssistPanel onApplyCopy={setPostCopy} />
             )}

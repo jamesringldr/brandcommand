@@ -7,7 +7,7 @@ import { EmptyState } from '../ui/EmptyState'
  */
 export function ComposerDesignsPanel({ brand }: { brand: Brand }) {
   return (
-    <div className="flex h-full flex-col gap-4 p-5">
+    <div className="flex h-full flex-col gap-3 px-4 py-5">
       <div>
         <h3 className="text-sm font-semibold text-neutral-100">Designs</h3>
         <p className="mt-1 text-xs text-neutral-500">
