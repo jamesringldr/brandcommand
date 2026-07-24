@@ -1,10 +1,12 @@
 import { Navigate, Outlet, useParams } from 'react-router-dom'
 import { BrandProvider, useBrandContext } from '../components/BrandProvider'
 import { CreatePostModalProvider } from '../components/composer/CreatePostModalContext'
+import { detectBrandFromSubdomain } from '../lib/subdomain'
 
 function ShellInner() {
   const { brandSlug } = useParams<{ brandSlug?: string }>()
   const { loading, brands, activeBrand } = useBrandContext()
+  const subdomainBrand = detectBrandFromSubdomain()
 
   if (loading) {
     return (
@@ -25,7 +27,9 @@ function ShellInner() {
     )
   }
 
-  const brand = brands[0]!
+  const brand = subdomainBrand
+    ? brands.find((b) => b.slug === subdomainBrand) ?? brands[0]!
+    : brands[0]!
 
   if (!brandSlug) {
     return <Navigate to={`/${brand.slug}/dashboard`} replace />
