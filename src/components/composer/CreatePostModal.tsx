@@ -157,7 +157,7 @@ export function CreatePostModal({ onClose }: { onClose: () => void }) {
     >
       <div
         className={cn(
-          'flex max-h-[90vh] w-full flex-col overflow-hidden rounded-2xl bg-neutral-900 ring-1 ring-neutral-800 transition-[max-width]',
+          'flex max-h-[95vh] w-full flex-col overflow-hidden rounded-2xl bg-neutral-900 ring-1 ring-neutral-800 transition-[max-width]',
           expanded ? 'max-w-[95vw]' : 'max-w-[90vw]',
         )}
       >
@@ -227,7 +227,7 @@ export function CreatePostModal({ onClose }: { onClose: () => void }) {
         </header>
 
         <div className="grid min-h-0 flex-1 grid-cols-1 divide-neutral-800 overflow-hidden lg:grid-cols-2 lg:divide-x">
-          <div className="flex min-h-0 flex-col gap-4 overflow-y-auto p-5">
+          <div className="flex min-h-0 flex-col gap-3 overflow-y-auto p-5">
             <div className="flex items-center gap-2">
               {channels.map((ch) => {
                 const active = selectedPlatforms.includes(ch.value)
@@ -265,7 +265,7 @@ export function CreatePostModal({ onClose }: { onClose: () => void }) {
               value={postCopy}
               onChange={(e) => setPostCopy(e.target.value)}
               placeholder="Start writing or get inspired with AI Assist…"
-              className="min-h-[12rem] flex-1 resize-none rounded-xl border border-neutral-800 bg-neutral-800/60 px-4 py-3 text-sm text-neutral-100 placeholder:text-neutral-500 focus:border-accent-500 focus:outline-none focus:ring-1 focus:ring-accent-500"
+              className="min-h-[8rem] flex-1 resize-none rounded-xl border border-neutral-800 bg-neutral-800/60 px-4 py-3 text-sm text-neutral-100 placeholder:text-neutral-500 focus:border-accent-500 focus:outline-none focus:ring-1 focus:ring-accent-500"
             />
 
             <div className="flex items-center justify-between">
