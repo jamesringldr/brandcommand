@@ -226,7 +226,7 @@ export default function PlannerBoard() {
                 </BoardColumn>
               ))}
             </div>
-            <div style={{ flex: '0 0 5px' }} aria-hidden />
+            <div style={{ flex: '0 0 16px' }} aria-hidden />
           </div>
 
           <DragOverlay dropAnimation={null}>

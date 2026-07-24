@@ -58,7 +58,7 @@ export function BoardColumn({
         </Link>
       </header>
 
-      <div className="flex min-h-0 flex-1 flex-col gap-2 px-3 pb-0">
+      <div className="flex min-h-0 flex-1 flex-col gap-2 px-3 pb-3">
         <Link
           to={newIdeaHref}
           className="shrink-0 rounded-md px-1 py-1.5 text-left text-sm text-neutral-300 transition hover:bg-neutral-800/70 hover:text-neutral-100"
