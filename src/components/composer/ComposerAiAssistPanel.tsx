@@ -95,7 +95,7 @@ export function ComposerAiAssistPanel({
       {phase === 'loading' && (
         <div className="flex flex-1 flex-col items-center justify-center gap-3 text-center">
           <span
-            className="h-8 w-8 animate-spin rounded-full border-2 border-neutral-700 border-t-accent-500"
+            className="h-8 w-8 animate-spin rounded-full border-2 border-neutral-600 border-t-accent-500"
             aria-hidden
           />
           <p className="text-sm text-neutral-300">{LOADING_VERBS[verbIndex]}</p>
@@ -111,7 +111,7 @@ export function ComposerAiAssistPanel({
               onChange={(e) => setPrompt(e.target.value)}
               rows={5}
               placeholder="Pro tip: share things like what your goal of the post is, any specifics like service or themes..."
-              className="mt-1.5 w-full resize-none rounded-xl border border-neutral-700 bg-neutral-800 px-3 py-2.5 text-sm text-neutral-100 placeholder:text-neutral-500 focus:border-accent-500 focus:outline-none focus:ring-1 focus:ring-accent-500"
+              className="mt-1.5 w-full resize-none rounded-xl border border-neutral-600 bg-neutral-700 px-3 py-2.5 text-sm text-neutral-100 placeholder:text-neutral-500 focus:border-accent-500 focus:outline-none focus:ring-1 focus:ring-accent-500"
             />
           </label>
 
@@ -136,7 +136,7 @@ export function ComposerAiAssistPanel({
                     'rounded-lg border px-2.5 py-2 text-left transition',
                     active
                       ? 'border-accent-500 bg-accent-600/20 text-neutral-100'
-                      : 'border-neutral-800 bg-neutral-800/50 text-neutral-300 hover:border-neutral-600 hover:bg-neutral-800',
+                      : 'border-neutral-700 bg-neutral-700/50 text-neutral-300 hover:border-neutral-500 hover:bg-neutral-700',
                   )}
                 >
                   <span className="block text-xs font-medium">{s.label}</span>
@@ -161,7 +161,7 @@ export function ComposerAiAssistPanel({
               value={feedback}
               onChange={(e) => setFeedback(e.target.value)}
               placeholder="e.g. make it shorter, add a CTA..."
-              className="flex-1 rounded-lg border border-neutral-700 bg-neutral-800 px-3 py-2 text-sm text-neutral-100 placeholder:text-neutral-500 focus:border-accent-500 focus:outline-none focus:ring-1 focus:ring-accent-500"
+              className="flex-1 rounded-lg border border-neutral-600 bg-neutral-700 px-3 py-2 text-sm text-neutral-100 placeholder:text-neutral-500 focus:border-accent-500 focus:outline-none focus:ring-1 focus:ring-accent-500"
             />
             <button
               type="submit"

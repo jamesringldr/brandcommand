@@ -60,13 +60,13 @@ export function SchedulingControl({
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
-        className="rounded-md border border-neutral-700 bg-neutral-800 px-3 py-2 text-sm text-neutral-100 hover:border-neutral-600"
+        className="rounded-md border border-neutral-600 bg-neutral-700 px-3 py-2 text-sm text-neutral-100 hover:border-neutral-500"
       >
         {triggerLabel}
       </button>
 
       {open && (
-        <div className="absolute bottom-full right-0 z-10 mb-2 w-72 rounded-xl border border-neutral-800 bg-neutral-800 p-1.5 shadow-xl">
+        <div className="absolute bottom-full right-0 z-10 mb-2 w-72 rounded-xl border border-neutral-700 bg-neutral-700 p-1.5 shadow-xl">
           {SCHEDULE_OPTIONS.map((opt) => {
             const active = value === opt.id
             return (
@@ -84,7 +84,7 @@ export function SchedulingControl({
                   'block w-full rounded-lg px-3 py-2.5 text-left transition',
                   active
                     ? 'bg-accent-600/15 ring-1 ring-accent-600/40'
-                    : 'hover:bg-neutral-800/70',
+                    : 'hover:bg-neutral-600/70',
                 )}
               >
                 <span className="flex items-center gap-1.5 text-sm font-medium text-neutral-100">
@@ -99,12 +99,12 @@ export function SchedulingControl({
           })}
 
           {value === 'set_date_time' && (
-            <div className="mt-1 border-t border-neutral-800 px-3 pb-1.5 pt-2">
+            <div className="mt-1 border-t border-neutral-600 px-3 pb-1.5 pt-2">
               <input
                 type="datetime-local"
                 value={scheduleAt}
                 onChange={(e) => onScheduleAtChange(e.target.value)}
-                className="w-full rounded-md border border-neutral-700 bg-neutral-900 px-2 py-1.5 text-xs text-neutral-100"
+                className="w-full rounded-md border border-neutral-600 bg-neutral-800 px-2 py-1.5 text-xs text-neutral-100"
               />
               <button
                 type="button"

@@ -157,11 +157,11 @@ export function CreatePostModal({ onClose }: { onClose: () => void }) {
     >
       <div
         className={cn(
-          'flex max-h-[95vh] w-full flex-col overflow-hidden rounded-2xl bg-neutral-900 ring-1 ring-neutral-800 transition-[max-width]',
+          'flex max-h-[95vh] w-full flex-col overflow-hidden rounded-2xl bg-neutral-800 ring-1 ring-neutral-700 transition-[max-width]',
           expanded ? 'max-w-[95vw]' : 'max-w-[90vw]',
         )}
       >
-        <header className="flex shrink-0 items-center justify-between gap-4 border-b border-neutral-800 px-5 py-4">
+        <header className="flex shrink-0 items-center justify-between gap-4 border-b border-neutral-700 px-5 py-4">
           <div className="flex min-w-0 items-center gap-3">
             <h2 className="text-lg font-semibold text-neutral-50">
               Create Post
@@ -170,7 +170,7 @@ export function CreatePostModal({ onClose }: { onClose: () => void }) {
               <select
                 value={mediaType}
                 onChange={(e) => setMediaType(e.target.value)}
-                className="appearance-none rounded-full border border-neutral-700 bg-neutral-800 py-1.5 pl-3 pr-7 text-xs font-medium text-neutral-200 focus:border-accent-500 focus:outline-none focus:ring-1 focus:ring-accent-500"
+                className="appearance-none rounded-full border border-neutral-600 bg-neutral-700 py-1.5 pl-3 pr-7 text-xs font-medium text-neutral-200 focus:border-accent-500 focus:outline-none focus:ring-1 focus:ring-accent-500"
               >
                 {MEDIA_TYPES.map((t) => (
                   <option key={t.value} value={t.value}>
@@ -185,7 +185,7 @@ export function CreatePostModal({ onClose }: { onClose: () => void }) {
           </div>
 
           <div className="flex shrink-0 items-center gap-2">
-            <div className="flex items-center gap-1 rounded-lg bg-neutral-800 p-1">
+            <div className="flex items-center gap-1 rounded-lg bg-neutral-700 p-1">
               {TABS.map((tab) => (
                 <button
                   key={tab.id}
@@ -196,10 +196,10 @@ export function CreatePostModal({ onClose }: { onClose: () => void }) {
                   className={cn(
                     'rounded-md px-2.5 py-1.5 text-xs font-medium transition',
                     tab.disabled
-                      ? 'cursor-not-allowed text-neutral-600'
+                      ? 'cursor-not-allowed text-neutral-500'
                       : activeTab === tab.id
                         ? 'bg-accent-600 text-neutral-950'
-                        : 'text-neutral-300 hover:bg-neutral-800',
+                        : 'text-neutral-300 hover:bg-neutral-600',
                   )}
                 >
                   {tab.label}
@@ -211,7 +211,7 @@ export function CreatePostModal({ onClose }: { onClose: () => void }) {
               onClick={() => setExpanded((v) => !v)}
               aria-label={expanded ? 'Collapse' : 'Expand'}
               title={expanded ? 'Collapse' : 'Expand'}
-              className="flex h-8 w-8 items-center justify-center rounded-md text-neutral-400 transition hover:bg-neutral-800 hover:text-neutral-100"
+              className="flex h-8 w-8 items-center justify-center rounded-md text-neutral-400 transition hover:bg-neutral-700 hover:text-neutral-100"
             >
               ⛶
             </button>
@@ -219,14 +219,14 @@ export function CreatePostModal({ onClose }: { onClose: () => void }) {
               type="button"
               onClick={onClose}
               aria-label="Close"
-              className="flex h-8 w-8 items-center justify-center rounded-md text-lg leading-none text-neutral-400 transition hover:bg-neutral-800 hover:text-neutral-100"
+              className="flex h-8 w-8 items-center justify-center rounded-md text-lg leading-none text-neutral-400 transition hover:bg-neutral-700 hover:text-neutral-100"
             >
               ×
             </button>
           </div>
         </header>
 
-        <div className="grid min-h-0 flex-1 grid-cols-1 divide-neutral-800 overflow-hidden lg:grid-cols-[4fr_1fr] lg:divide-x">
+        <div className="grid min-h-0 flex-1 grid-cols-1 divide-neutral-700 overflow-hidden lg:grid-cols-[3fr_2fr] lg:divide-x">
           <div className="flex min-h-0 flex-col gap-4 overflow-y-auto px-6 py-5">
             <div className="flex items-center gap-2">
               {channels.map((ch) => {
@@ -239,7 +239,7 @@ export function CreatePostModal({ onClose }: { onClose: () => void }) {
                     title={ch.label}
                     className={cn(
                       'flex h-9 w-9 items-center justify-center rounded-full text-[11px] font-semibold uppercase text-white ring-2 transition',
-                      PLATFORM_COLORS[ch.value] ?? 'bg-neutral-700',
+                      PLATFORM_COLORS[ch.value] ?? 'bg-neutral-600',
                       active
                         ? 'ring-accent-500'
                         : 'opacity-40 ring-transparent hover:opacity-70',
@@ -252,7 +252,7 @@ export function CreatePostModal({ onClose }: { onClose: () => void }) {
               <a
                 href={`/${activeBrand.slug}/settings/socials`}
                 title="Add channel"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-dashed border-neutral-700 text-neutral-500 transition hover:border-neutral-500 hover:text-neutral-300"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-dashed border-neutral-600 text-neutral-500 transition hover:border-neutral-500 hover:text-neutral-300"
               >
                 +
               </a>
@@ -265,11 +265,11 @@ export function CreatePostModal({ onClose }: { onClose: () => void }) {
               value={postCopy}
               onChange={(e) => setPostCopy(e.target.value)}
               placeholder="Start writing or get inspired with AI Assist…"
-              className="min-h-[8rem] flex-1 resize-none rounded-xl border border-neutral-800 bg-neutral-800/60 px-4 py-3 text-sm text-neutral-100 placeholder:text-neutral-500 focus:border-accent-500 focus:outline-none focus:ring-1 focus:ring-accent-500"
+              className="min-h-[8rem] flex-1 resize-none rounded-xl border border-neutral-700 bg-neutral-700/60 px-4 py-3 text-sm text-neutral-100 placeholder:text-neutral-500 focus:border-accent-500 focus:outline-none focus:ring-1 focus:ring-accent-500"
             />
 
             <div className="flex items-center justify-between">
-              <div className="flex h-24 w-24 flex-col items-center justify-center gap-1 rounded-xl border border-dashed border-neutral-700 text-center text-neutral-500">
+              <div className="flex h-24 w-24 flex-col items-center justify-center gap-1 rounded-xl border border-dashed border-neutral-600 text-center text-neutral-500">
                 <span className="text-lg leading-none">+</span>
                 <span className="px-1 text-[10px] leading-tight">
                   Drag &amp; drop or use the Designs tab
@@ -280,18 +280,18 @@ export function CreatePostModal({ onClose }: { onClose: () => void }) {
               </span>
             </div>
 
-            <label className="block text-xs text-neutral-400">
+            <label className="block text-xs font-medium text-white">
               First Comment
               <input
                 value={firstComment}
                 onChange={(e) => setFirstComment(e.target.value)}
                 placeholder="Your comment"
-                className="mt-1.5 w-full rounded-lg border border-neutral-800 bg-neutral-800/60 px-3 py-2 text-sm text-neutral-100 placeholder:text-neutral-500 focus:border-accent-500 focus:outline-none focus:ring-1 focus:ring-accent-500"
+                className="mt-1.5 w-full rounded-lg border border-neutral-700 bg-neutral-700/60 px-3 py-2 text-sm text-neutral-100 placeholder:text-neutral-500 focus:border-accent-500 focus:outline-none focus:ring-1 focus:ring-accent-500"
               />
             </label>
           </div>
 
-          <div className="min-h-0 overflow-y-auto border-l border-neutral-800">
+          <div className="min-h-0 overflow-y-auto border-l border-neutral-700">
             {activeTab === 'ai' && (
               <ComposerAiAssistPanel onApplyCopy={setPostCopy} />
             )}
@@ -301,14 +301,14 @@ export function CreatePostModal({ onClose }: { onClose: () => void }) {
           </div>
         </div>
 
-        <footer className="flex shrink-0 flex-wrap items-center justify-between gap-3 border-t border-neutral-800 px-5 py-4">
+        <footer className="flex shrink-0 flex-wrap items-center justify-between gap-3 border-t border-neutral-700 px-5 py-4">
           <div className="flex items-center gap-4">
             <label className="flex items-center gap-2 text-sm text-neutral-400">
               <input
                 type="checkbox"
                 checked={createAnother}
                 onChange={(e) => setCreateAnother(e.target.checked)}
-                className="h-3.5 w-3.5 rounded border-neutral-600 bg-neutral-800 text-accent-600 focus:ring-accent-500"
+                className="h-3.5 w-3.5 rounded border-neutral-500 bg-neutral-700 text-accent-600 focus:ring-accent-500"
               />
               Create Another
             </label>
