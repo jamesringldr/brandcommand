@@ -4,6 +4,7 @@ import { useBrandContext } from '../BrandProvider'
 import { cn } from '../../lib/cn'
 import { TreeItem } from './SidebarTree'
 import { SidebarNav } from './SidebarNav'
+import { useCreatePostModal } from '../composer/CreatePostModalContext'
 
 type AppShellProps = {
   children: ReactNode
@@ -23,6 +24,7 @@ export function AppShell({
 }: AppShellProps) {
   const location = useLocation()
   const { brands, logout, loading, activeBrand } = useBrandContext()
+  const { openCreatePost } = useCreatePostModal()
   const brand = activeBrand ?? brands[0] ?? null
   const base = brand ? `/${brand.slug}` : '/'
   const isGenerateView =
@@ -58,12 +60,13 @@ export function AppShell({
           )}
           {!loading && brand && (
             <div className="space-y-2">
-              <Link
-                to={`${base}/create`}
+              <button
+                type="button"
+                onClick={openCreatePost}
                 className="flex items-center justify-center rounded-md bg-accent-600 px-2 py-2 text-sm font-medium text-neutral-950 transition hover:bg-accent-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500"
               >
                 + New
-              </Link>
+              </button>
               <SidebarNav base={base} />
             </div>
           )}
