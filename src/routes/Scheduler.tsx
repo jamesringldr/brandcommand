@@ -82,10 +82,6 @@ export default function Scheduler() {
 
   return (
     <AppShell
-      breadcrumbs={[
-        { label: activeBrand.name, href: `/${activeBrand.slug}/dashboard` },
-        { label: 'Schedule' },
-      ]}
       title="Schedule"
       subtitle="Only Ready social items — platforms chosen at schedule time"
     >
@@ -135,7 +131,7 @@ export default function Scheduler() {
                       onClick={() => togglePlatform(p)}
                       className={
                         active
-                          ? 'rounded-md bg-violet-600 px-2.5 py-1 text-xs font-medium text-white'
+                          ? 'rounded-md bg-accent-600 px-2.5 py-1 text-xs font-medium text-neutral-950'
                           : 'rounded-md bg-neutral-800 px-2.5 py-1 text-xs text-neutral-400'
                       }
                     >
@@ -159,7 +155,7 @@ export default function Scheduler() {
             <button
               type="submit"
               disabled={busy || !selected || platforms.length === 0}
-              className="rounded-md bg-violet-600 px-4 py-2 text-sm font-medium text-white hover:bg-violet-500 disabled:opacity-50"
+              className="rounded-md bg-accent-600 px-4 py-2 text-sm font-medium text-neutral-950 hover:bg-accent-500 disabled:opacity-50"
             >
               {busy ? 'Scheduling…' : 'Schedule'}
             </button>

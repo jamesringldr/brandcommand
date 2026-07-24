@@ -55,7 +55,7 @@ export function AiAssistPanel({
           type="button"
           disabled={busy}
           onClick={() => void improve()}
-          className="rounded-md bg-violet-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-violet-500 disabled:opacity-50"
+          className="rounded-md bg-accent-600 px-3 py-1.5 text-xs font-medium text-neutral-950 hover:bg-accent-500 disabled:opacity-50"
         >
           Improve copy
         </button>

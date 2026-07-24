@@ -24,7 +24,7 @@ export function StatusSelect({
         const v = e.target.value as ContentStatus
         if (v) onChange(v)
       }}
-      className="rounded-md border border-neutral-700 bg-neutral-900 px-2 py-1.5 text-sm text-neutral-200 focus:border-violet-500 focus:outline-none focus:ring-1 focus:ring-violet-500 disabled:opacity-50"
+      className="rounded-md border border-neutral-700 bg-neutral-900 px-2 py-1.5 text-sm text-neutral-200 focus:border-accent-500 focus:outline-none focus:ring-1 focus:ring-accent-500 disabled:opacity-50"
     >
       <option value="">Move to…</option>
       {options.map((s) => (

@@ -72,7 +72,7 @@ export function TreeSection({
           onClick={handleChevronClick}
           aria-expanded={expanded}
           aria-label={expanded ? `Collapse ${label}` : `Expand ${label}`}
-          className="flex h-7 w-6 shrink-0 items-center justify-center rounded hover:bg-neutral-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-violet-500"
+          className="flex h-7 w-6 shrink-0 items-center justify-center rounded hover:bg-neutral-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-accent-500"
         >
           <Chevron expanded={expanded} />
         </button>

@@ -97,11 +97,6 @@ export default function ContentItemDetail() {
 
   return (
     <AppShell
-      breadcrumbs={[
-        { label: activeBrand.name, href: `/${activeBrand.slug}/dashboard` },
-        { label: 'Planner', href: `/${activeBrand.slug}/planner` },
-        { label: item.title },
-      ]}
       title={item.title}
       subtitle={`${item.type} · ${item.status}`}
       headerAction={<StatusBadge status={item.status} />}
@@ -120,7 +115,7 @@ export default function ContentItemDetail() {
               <input
                 value={item.title}
                 onChange={(e) => setItem({ ...item, title: e.target.value })}
-                className="mt-1 w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-100 focus:border-violet-500 focus:outline-none focus:ring-1 focus:ring-violet-500"
+                className="mt-1 w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-100 focus:border-accent-500 focus:outline-none focus:ring-1 focus:ring-accent-500"
               />
             </label>
             <label className="block text-xs text-neutral-400">
@@ -142,7 +137,7 @@ export default function ContentItemDetail() {
                 value={item.body ?? ''}
                 onChange={(e) => setItem({ ...item, body: e.target.value })}
                 rows={10}
-                className="mt-1 w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-100 focus:border-violet-500 focus:outline-none focus:ring-1 focus:ring-violet-500"
+                className="mt-1 w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-100 focus:border-accent-500 focus:outline-none focus:ring-1 focus:ring-accent-500"
               />
             </label>
             {item.derived_from && (
@@ -150,7 +145,7 @@ export default function ContentItemDetail() {
                 Derived from{' '}
                 <Link
                   to={`/${activeBrand.slug}/planner/${item.derived_from}`}
-                  className="text-violet-400 hover:text-violet-300"
+                  className="text-accent-400 hover:text-accent-300"
                 >
                   {item.derived_from}
                 </Link>
@@ -171,7 +166,7 @@ export default function ContentItemDetail() {
                 type="button"
                 onClick={() => void save()}
                 disabled={saving}
-                className="rounded-md bg-violet-600 px-4 py-2 text-sm font-medium text-white hover:bg-violet-500 disabled:opacity-50"
+                className="rounded-md bg-accent-600 px-4 py-2 text-sm font-medium text-neutral-950 hover:bg-accent-500 disabled:opacity-50"
               >
                 {saving ? 'Saving…' : 'Save'}
               </button>
@@ -200,7 +195,7 @@ export default function ContentItemDetail() {
               <p className="text-sm text-neutral-300">Ready to schedule</p>
               <Link
                 to={`/${activeBrand.slug}/schedule?item=${item.id}`}
-                className="mt-3 inline-block rounded-md bg-violet-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-violet-500"
+                className="mt-3 inline-block rounded-md bg-accent-600 px-3 py-1.5 text-xs font-medium text-neutral-950 hover:bg-accent-500"
               >
                 Open scheduler
               </Link>

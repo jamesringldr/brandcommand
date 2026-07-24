@@ -57,7 +57,7 @@ export default function Login() {
           type="button"
           onClick={() => void handleGoogle()}
           disabled={loading}
-          className="mt-6 w-full rounded-md bg-violet-600 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-violet-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-500 disabled:opacity-60"
+          className="mt-6 w-full rounded-md bg-accent-600 px-4 py-2.5 text-sm font-medium text-neutral-950 transition hover:bg-accent-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500 disabled:opacity-60"
         >
           {loading ? 'Redirecting…' : 'Sign in with Google'}
         </button>

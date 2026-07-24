@@ -59,10 +59,6 @@ export default function PlannerBoard() {
 
   return (
     <AppShell
-      breadcrumbs={[
-        { label: activeBrand.name, href: `/${activeBrand.slug}/dashboard` },
-        { label: 'Planner' },
-      ]}
       title="Planner"
       subtitle="Content pipeline — Buffer-style queue with status stages"
     >
@@ -76,21 +72,21 @@ export default function PlannerBoard() {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Post title or idea"
-            className="rounded-lg border border-neutral-700 bg-neutral-900 px-3 py-2 text-sm text-neutral-100 focus:border-violet-500 focus:outline-none focus:ring-1 focus:ring-violet-500"
+            className="rounded-lg border border-neutral-700 bg-neutral-900 px-3 py-2 text-sm text-neutral-100 focus:border-accent-500 focus:outline-none focus:ring-1 focus:ring-accent-500"
           />
         </label>
         <button
           type="submit"
           disabled={creating || !title.trim()}
-          className="rounded-md bg-violet-600 px-4 py-2 text-sm font-medium text-white hover:bg-violet-500 disabled:opacity-50"
+          className="rounded-md bg-accent-600 px-4 py-2 text-sm font-medium text-neutral-950 hover:bg-accent-500 disabled:opacity-50"
         >
           Add Planned
         </button>
         <Link
-          to={`/${activeBrand.slug}/suggestions`}
+          to={`/${activeBrand.slug}/create`}
           className="rounded-md bg-neutral-800 px-4 py-2 text-sm text-neutral-200 hover:bg-neutral-700"
         >
-          AI suggestions
+          Generate
         </Link>
       </form>
 

@@ -3,7 +3,7 @@ import { cn } from '../../lib/cn'
 const statusStyles: Record<string, string> = {
   Planned: 'bg-neutral-800 text-neutral-300 ring-neutral-700',
   Editing: 'bg-sky-950 text-sky-300 ring-sky-800',
-  Reviewing: 'bg-violet-950 text-violet-300 ring-violet-800',
+  Reviewing: 'bg-accent-950 text-accent-300 ring-accent-800',
   Ready: 'bg-emerald-950 text-emerald-300 ring-emerald-800',
   Scheduled: 'bg-amber-950 text-amber-300 ring-amber-800',
   Posted: 'bg-emerald-950 text-emerald-300 ring-emerald-800',

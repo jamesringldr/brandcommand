@@ -10,6 +10,7 @@ import ContentItemDetail from './routes/planner/ContentItemDetail'
 import Scheduler from './routes/Scheduler'
 import Campaigns from './routes/Campaigns'
 import Suggestions from './routes/Suggestions'
+import CreatePost from './routes/CreatePost'
 import Settings from './routes/Settings'
 import { RedirectToSettingsTab } from './routes/RedirectToSettingsTab'
 
@@ -38,6 +39,7 @@ function App() {
             />
             <Route path=":brandSlug/schedule" element={<Scheduler />} />
             <Route path=":brandSlug/campaigns" element={<Campaigns />} />
+            <Route path=":brandSlug/create" element={<CreatePost />} />
             <Route path=":brandSlug/suggestions" element={<Suggestions />} />
             <Route path=":brandSlug/settings" element={<Settings />} />
             <Route path=":brandSlug/settings/:tab" element={<Settings />} />

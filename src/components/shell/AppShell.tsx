@@ -1,29 +1,26 @@
 import type { ReactNode } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { cn } from '../../lib/cn'
 import { useBrandContext } from '../BrandProvider'
-import { Breadcrumbs, type Crumb } from './Breadcrumbs'
 import { TreeItem } from './SidebarTree'
 
 type AppShellProps = {
   children: ReactNode
-  breadcrumbs?: Crumb[]
   title?: string
   subtitle?: string
   headerAction?: ReactNode
 }
 
 const MAIN_LINKS = [
-  { id: 'dashboard', label: 'Dashboard', path: 'dashboard' },
+  { id: 'dashboard', label: 'Home', path: 'dashboard' },
+  { id: 'create', label: 'Generate', path: 'create' },
   { id: 'planner', label: 'Planner', path: 'planner' },
   { id: 'schedule', label: 'Schedule', path: 'schedule' },
-  { id: 'campaigns', label: 'Campaigns', path: 'campaigns' },
-  { id: 'suggestions', label: 'AI suggestions', path: 'suggestions' },
+  { id: 'campaigns', label: 'Goals', path: 'campaigns' },
+  { id: 'suggestions', label: 'Insights', path: 'suggestions' },
 ] as const
 
 export function AppShell({
   children,
-  breadcrumbs = [],
   title,
   subtitle,
   headerAction,
@@ -32,6 +29,10 @@ export function AppShell({
   const { brands, logout, loading, activeBrand } = useBrandContext()
   const brand = activeBrand ?? brands[0] ?? null
   const base = brand ? `/${brand.slug}` : '/'
+  const isGenerateView =
+    Boolean(brand) &&
+    (location.pathname === `${base}/create` ||
+      location.pathname.startsWith(`${base}/create/`))
 
   return (
     <div className="flex min-h-screen bg-neutral-950 text-neutral-100">
@@ -55,23 +56,31 @@ export function AppShell({
             <p className="px-2 py-1 text-xs text-neutral-500">Loading…</p>
           )}
           {!loading && brand && (
-            <ul className="space-y-0.5">
-              {MAIN_LINKS.map((link) => {
-                const href = `${base}/${link.path}`
-                const isActive =
-                  location.pathname === href ||
-                  location.pathname.startsWith(`${href}/`)
-                return (
-                  <TreeItem
-                    key={link.id}
-                    label={link.label}
-                    href={href}
-                    isActive={isActive}
-                    depth={0}
-                  />
-                )
-              })}
-            </ul>
+            <div className="space-y-2">
+              <Link
+                to={`${base}/create`}
+                className="flex items-center justify-center rounded-md bg-accent-600 px-2 py-2 text-sm font-medium text-neutral-950 transition hover:bg-accent-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500"
+              >
+                + New
+              </Link>
+              <ul className="space-y-0.5">
+                {MAIN_LINKS.map((link) => {
+                  const href = `${base}/${link.path}`
+                  const isActive =
+                    location.pathname === href ||
+                    location.pathname.startsWith(`${href}/`)
+                  return (
+                    <TreeItem
+                      key={link.id}
+                      label={link.label}
+                      href={href}
+                      isActive={isActive}
+                      depth={0}
+                    />
+                  )
+                })}
+              </ul>
+            </div>
           )}
         </nav>
         <div className="space-y-0.5 border-t border-neutral-800 p-3">
@@ -99,9 +108,8 @@ export function AppShell({
         <header className="border-b border-neutral-800 bg-neutral-900/80 px-6 py-4">
           <div className="flex items-start justify-between gap-4">
             <div className="min-w-0 flex-1">
-              {breadcrumbs.length > 0 && <Breadcrumbs items={breadcrumbs} />}
               {(title || subtitle) && (
-                <div className={cn(breadcrumbs.length > 0 && 'mt-3')}>
+                <div>
                   {title && (
                     <h1 className="text-xl font-semibold tracking-tight text-neutral-50">
                       {title}
@@ -113,11 +121,25 @@ export function AppShell({
                 </div>
               )}
             </div>
-            {headerAction && (
-              <div className="flex shrink-0 items-center gap-3 pt-0.5">
-                {headerAction}
-              </div>
-            )}
+            <div className="flex shrink-0 items-center gap-3 pt-0.5">
+              {headerAction}
+              {brand &&
+                (isGenerateView ? (
+                  <Link
+                    to={`${base}/planner`}
+                    className="rounded-md bg-accent-600 px-3 py-1.5 text-sm font-medium text-neutral-950 transition hover:bg-accent-400"
+                  >
+                    Planner
+                  </Link>
+                ) : (
+                  <Link
+                    to={`${base}/create`}
+                    className="rounded-md bg-accent-600 px-3 py-1.5 text-sm font-medium text-neutral-950 transition hover:bg-accent-400"
+                  >
+                    Generate
+                  </Link>
+                ))}
+            </div>
           </div>
         </header>
         <main className="flex-1 overflow-y-auto px-6 py-6">{children}</main>

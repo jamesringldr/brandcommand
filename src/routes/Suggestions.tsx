@@ -48,23 +48,19 @@ export default function Suggestions() {
 
   return (
     <AppShell
-      breadcrumbs={[
-        { label: activeBrand.name, href: `/${activeBrand.slug}/dashboard` },
-        { label: 'AI suggestions' },
-      ]}
-      title="AI suggestions"
+      title="Insights"
       subtitle="Accept creates a Planned content item"
-      headerAction={
+    >
+      <div className="mb-4 flex justify-end">
         <button
           type="button"
           disabled={busy}
           onClick={() => void generate()}
-          className="rounded-md bg-violet-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-violet-500 disabled:opacity-50"
+          className="rounded-md bg-neutral-800 px-3 py-1.5 text-xs font-medium text-neutral-200 hover:bg-neutral-700 disabled:opacity-50"
         >
-          {busy ? 'Generating…' : 'Generate'}
+          {busy ? 'Generating…' : 'Refresh ideas'}
         </button>
-      }
-    >
+      </div>
       {error && (
         <p className="mb-4 text-sm text-rose-300" role="alert">
           {error}
@@ -98,7 +94,7 @@ export default function Suggestions() {
                         navigate(`/${activeBrand.slug}/planner/${item.id}`),
                       )
                     }
-                    className="rounded-md bg-violet-600 px-3 py-1.5 text-xs font-medium text-white"
+                    className="rounded-md bg-accent-600 px-3 py-1.5 text-xs font-medium text-neutral-950"
                   >
                     Accept → Planned
                   </button>

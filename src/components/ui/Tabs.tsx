@@ -34,7 +34,7 @@ export function Tabs({ tabs, activeId, onChange, className }: TabsProps) {
             className={cn(
               'rounded-md px-3 py-1.5 text-xs transition',
               active
-                ? 'bg-violet-600 font-medium text-white'
+                ? 'bg-accent-600 font-medium text-neutral-950'
                 : 'text-neutral-400 hover:text-neutral-200',
             )}
           >

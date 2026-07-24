@@ -78,7 +78,7 @@ export function VibePanel() {
         ))}
         <button
           type="submit"
-          className="rounded-md bg-violet-600 px-4 py-2 text-sm font-medium text-white hover:bg-violet-500"
+          className="rounded-md bg-accent-600 px-4 py-2 text-sm font-medium text-neutral-950 hover:bg-accent-500"
         >
           Save vibe
         </button>

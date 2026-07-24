@@ -53,10 +53,6 @@ export default function Settings() {
 
   return (
     <AppShell
-      breadcrumbs={[
-        { label: activeBrand.name, href: `/${activeBrand.slug}/dashboard` },
-        { label: 'Settings' },
-      ]}
       title="Settings"
       subtitle={subtitle}
     >

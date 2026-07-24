@@ -5,6 +5,20 @@
   --foreground: #f5f5f5;
 }
 
+@theme {
+  --color-accent-50: #eaffea;
+  --color-accent-100: #c8fbc9;
+  --color-accent-200: #95f597;
+  --color-accent-300: #62ee66;
+  --color-accent-400: #45e349;
+  --color-accent-500: #32d735;
+  --color-accent-600: #32d735;
+  --color-accent-700: #28b52b;
+  --color-accent-800: #1f8c22;
+  --color-accent-900: #166619;
+  --color-accent-950: #0a3a0c;
+}
+
 html {
   color-scheme: dark;
 }

@@ -46,11 +46,7 @@ export default function Campaigns() {
 
   return (
     <AppShell
-      breadcrumbs={[
-        { label: activeBrand.name, href: `/${activeBrand.slug}/dashboard` },
-        { label: 'Campaigns' },
-      ]}
-      title="Campaigns"
+      title="Goals"
       subtitle="Strategy briefs tied to the brand — link content items later"
     >
       {error && (
@@ -66,7 +62,7 @@ export default function Campaigns() {
         <input
           value={name}
           onChange={(e) => setName(e.target.value)}
-          placeholder="Campaign name"
+          placeholder="Goal name"
           className="w-full rounded-lg border border-neutral-700 bg-neutral-900 px-3 py-2 text-sm"
         />
         <textarea
@@ -78,15 +74,15 @@ export default function Campaigns() {
         />
         <button
           type="submit"
-          className="rounded-md bg-violet-600 px-4 py-2 text-sm font-medium text-white hover:bg-violet-500"
+          className="rounded-md bg-accent-600 px-4 py-2 text-sm font-medium text-neutral-950 hover:bg-accent-500"
         >
-          Create campaign
+          Create goal
         </button>
       </form>
 
       {campaigns.length === 0 ? (
         <EmptyState
-          title="No campaigns"
+          title="No goals"
           description="Define a strategy brief to guide planner items and AI suggestions."
         />
       ) : (

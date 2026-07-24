@@ -44,7 +44,6 @@ export default function BrandDashboard() {
 
   return (
     <AppShell
-      breadcrumbs={[{ label: activeBrand.name }, { label: 'Dashboard' }]}
       title={activeBrand.name}
       subtitle="Centralized analytics + pipeline snapshot"
     >
@@ -81,7 +80,7 @@ export default function BrandDashboard() {
               action={
                 <Link
                   to={`/${activeBrand.slug}/planner`}
-                  className="text-sm text-violet-400 hover:text-violet-300"
+                  className="text-sm text-accent-400 hover:text-accent-300"
                 >
                   Open Planner
                 </Link>
@@ -107,7 +106,7 @@ export default function BrandDashboard() {
             action={
               <Link
                 to={`/${activeBrand.slug}/channels`}
-                className="text-sm text-violet-400 hover:text-violet-300"
+                className="text-sm text-accent-400 hover:text-accent-300"
               >
                 Manage channels
               </Link>
