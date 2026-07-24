@@ -17,10 +17,25 @@ export default function Login() {
       setChecking(false)
       return
     }
+
+    let active = true
     void supabase.auth.getSession().then(({ data }) => {
+      if (!active) return
       if (data.session) navigate('/', { replace: true })
       else setChecking(false)
     })
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (!active) return
+      if (session) navigate('/', { replace: true })
+    })
+
+    return () => {
+      active = false
+      subscription.unsubscribe()
+    }
   }, [navigate])
 
   async function handleSubmit(e: React.FormEvent) {
